@@ -25,14 +25,8 @@ import static com.finspire.Grandpittu.email.EmailTemplateName.BOOKING_CONFIRM;
 public class ReserveTableDetails {
     private final ReserveTableRepository reserveTableRepository;
     private final ReserveTableConverter reserveTableConverter;
-    private final EmailService emailService;
-    public BookingResponseDto saveBookingDetails(BookingRequestDto request) throws MessagingException, UnsupportedEncodingException {
+    public BookingResponseDto saveBookingDetails(BookingRequestDto request){
         ReserveTable response = reserveTableRepository.save(reserveTableConverter.converter(request));
-            emailService.sendBookingConfirmationEmail(
-                    response,
-                    BOOKING_CONFIRM,
-                    "Booking Confirmation"
-            );
         return BookingResponseDto.builder()
                 .phoneNo(response.getPhoneNo())
                 .dateTime(response.getDateAndTime())

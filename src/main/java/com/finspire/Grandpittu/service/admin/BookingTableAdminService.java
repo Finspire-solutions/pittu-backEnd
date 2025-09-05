@@ -9,6 +9,7 @@ import com.finspire.Grandpittu.entity.ReserveTable;
 import com.finspire.Grandpittu.enums.BookingStatus;
 import com.finspire.Grandpittu.exception.ServiceException;
 import com.finspire.Grandpittu.repository.ReserveTableRepository;
+import com.finspire.Grandpittu.service.SmsService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -27,6 +28,7 @@ import static com.finspire.Grandpittu.email.EmailTemplateName.REJECT_EMAIL;
 public class BookingTableAdminService {
     private final ReserveTableRepository repository;
     private final EmailService emailService;
+    private final SmsService smsService;
     public AcceptRessponseDto manageBookingTable(RejectRequestDto rejectRequest) throws MessagingException {
         ReserveTable existingReserveTable = repository.findById(rejectRequest.getBookingId())
                 .orElseThrow(() -> new ServiceException(
@@ -48,26 +50,30 @@ public class BookingTableAdminService {
 
         // Sending emails
         switch (newStatus) {
-            case ACCEPTED -> emailService.sendBookingRelatedEmail(
-                    existingReserveTable,
-                    EmailContentDto.builder()
-                            .reason("Good news! Your reservation request has been accepted.")
-                            .status("Accepted")
-                            .subject("Booking Accepted")
-                            .build(),
-                    ACCEPTED_EMAIL
-            );
-
-            case REJECTED -> emailService.sendBookingRelatedEmail(
-                    existingReserveTable,
-                    EmailContentDto.builder()
-                            .reason("We regret to inform you that your reservation request has been rejected.")
-                            .status("Rejected")
-                            .subject("Booking Rejected")
-                            .build(),
-                    REJECT_EMAIL
-            );
-
+            case ACCEPTED -> {
+                emailService.sendBookingRelatedEmail(
+                        existingReserveTable,
+                        EmailContentDto.builder()
+                                .reason("Good news! Your reservation request has been accepted.")
+                                .status("Accepted")
+                                .subject("Booking Accepted")
+                                .build(),
+                        ACCEPTED_EMAIL
+                );
+                smsService.sendBookingConfirmSms(existingReserveTable);
+            }
+            case REJECTED -> {
+                emailService.sendBookingRelatedEmail(
+                        existingReserveTable,
+                        EmailContentDto.builder()
+                                .reason("We regret to inform you that your reservation request has been rejected.")
+                                .status("Rejected")
+                                .subject("Booking Rejected")
+                                .build(),
+                        REJECT_EMAIL
+                );
+                smsService.sendBookingRejectedSms(existingReserveTable);
+            }
             case CANCELED -> emailService.sendBookingRelatedEmail(
                     existingReserveTable,
                     EmailContentDto.builder()

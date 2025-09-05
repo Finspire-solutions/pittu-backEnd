@@ -31,21 +31,9 @@ public class BookingController {
     private final SmsService smsService;
 
     @PostMapping()
-    public ResponseEntity<Map<String, Object>> saveBookingDetails(@RequestBody @Valid BookingRequestDto request) throws MessagingException, UnsupportedEncodingException {
+    public ResponseEntity<BookingResponseDto> saveBookingDetails(@RequestBody @Valid BookingRequestDto request) throws MessagingException, UnsupportedEncodingException {
         BookingResponseDto responseDto = bookingService.saveBookingDetails(request);
-
-        if (responseDto.getPhoneNo() != null) {
-            String smsResponse = smsService.sendSms(responseDto);
-
-            // Prepare response
-            Map<String, Object> response = new HashMap<>();
-            response.put("booking", responseDto);
-            response.put("smsResponse", smsResponse);
-
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } else {
-            throw new RuntimeException("Phone number is missing. Please try again.");
-        }
+            return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
 }

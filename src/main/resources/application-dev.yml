@@ -1,14 +1,16 @@
 spring:
   datasource:
-#    url: jdbc:mysql://grandpittu-restaurant-booking.cale2qc4qfp1.us-east-1.rds.amazonaws.com:3306/grandpittu-restaurant-booking
-#    username: admin
-#    password: Cchayan123
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: jdbc:mysql://grandpittu-restaurant-booking.cale2qc4qfp1.us-east-1.rds.amazonaws.com:3306/grandpittu-restaurant-booking
+    username: admin
+    password: Cchayan123
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+    hikari:
+      max-lifetime: 300000
+      idle-timeout: 240000
+#    url: ${SPRING_DATASOURCE_URL}
+#    username: ${SPRING_DATASOURCE_USERNAME}
+#    password: ${SPRING_DATASOURCE_PASSWORD}
+#    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
@@ -60,12 +62,12 @@ application:
       activation-url: http://localhost:4200/activate-account
 
 notifylk:
-  userId: ${NOTIFYLK_USERID}
-  apiKey: ${NOTIFYLK_APIKEY}
-  senderId: ${NOTIFYLK_SENDERID}
-#  userId: 29960
-#  apiKey: M83L5EdCJmZeTSCJMEx5
-#  senderId: NotifyDEMO
+#  userId: ${NOTIFYLK_USERID}
+#  apiKey: ${NOTIFYLK_APIKEY}
+#  senderId: ${NOTIFYLK_SENDERID}
+  userId: 29960
+  apiKey: M83L5EdCJmZeTSCJMEx5
+  senderId: NotifyDEMO
 
 
 #spring.jackson.serialization.indent-output=true
