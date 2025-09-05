@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:inline="text">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Accepted</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .top-bar {
+            height: 80px;
+            max-width: 600px;
+            background-color: #302730;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 10px;
+            border-radius: 5px 5px 0px 0px;
+        }
+
+        .top-bar img {
+            height: 70%;
+            width: 82px;
+            vertical-align: middle;
+            margin-right: 10px;
+            margin-top: 20px;
+            object-fit: cover;
+        }
+
+        .top-bar .title {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .top-bar .title h1 {
+            margin: 0;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .top-bar .title p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .content {
+            padding: 30px 20px;
+            color: #333;
+        }
+
+        .content h2 {
+            color: #2C2323;
+        }
+
+        .booking-details {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+
+        .booking-details p {
+            margin: 5px 0;
+        }
+
+        .contact-info {
+            margin-top: 10px;
+        }
+
+        .footer {
+            background-color: #2C2323;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 13px;
+            border-radius: 0px 0px 5px 5px;
+        }
+
+        .footer .social-icons {
+            margin: 10px 0;
+        }
+
+        .footer .social-icons img {
+            height: 20px;
+            margin: 0 8px;
+            vertical-align: middle;
+        }
+
+        a {
+            color: #2C2323;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="email-container">
+    <!-- Top Header Bar -->
+    <div class="top-bar">
+        <img src="cid:logoImage" alt="GRANDPITTU Logo"/>
+        <div class="title">
+            <h1>GRANDPITTU</h1>
+            <p>Authentic Jaffna Cuisine</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <p>Dear <strong th:text="${customerName}"></strong>,</p>
+        <p th:text="${reason}"><strong th:text="${status}"></strong>.</p>
+
+        <div class="booking-details">
+            <p>
+                Here are the booking details:<br>
+                <strong>Booked Id :</strong> <span th:text="${bookingId}"></span><br>
+                <strong>Date :</strong> <span th:text="${reservedDate}"></span><br>
+                <strong>Number of people :</strong> <span th:text="${noOfPeople}"></span>
+            </p>
+        </div>
+
+        <h2>Hotel Location</h2>
+        <p>Dehiwala,Colombo</p>
+        <p>
+            <a href="https://maps.app.goo.gl/2pkPUscreHPn9TmH8">View on Google Maps</a>
+        </p>
+        <h2>Contact Us</h2>
+        <p class="contact-info">
+            Phone: +94 765 785 4211<br>
+            Email: <a href="mailto:contact@grandpittu.com">contact@grandpittu.com</a><br>
+            <!--            Website: <a href="{{hotelWebsite}}">www.grandpittu.lk</a>-->
+        </p>
+
+        <p>We look forward to welcoming you. If you have any questions or need to make changes, feel free to contact
+            us anytime.</p>
+        <p>Warm regards,<br><strong>GRANDPITTU Team</strong></p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-title">GRANDPITTU</div>
+        <div class="social-icons">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png" alt="Instagram">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png" alt="WhatsApp">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111393.png" alt="Facebook">
+        </div>
+        <!--        <div>Copyrights©{{currentYear}} Grandpittu. All Rights Reserved</div>-->
+    </div>
+</div>
+</body>
+
+</html>
