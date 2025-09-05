@@ -50,8 +50,6 @@ spring:
 #        mail.smtp.timeout: 3000
 #        mail.smtp.writetimeout: 5000
 
-
-
 application:
   security:
     jwt:
