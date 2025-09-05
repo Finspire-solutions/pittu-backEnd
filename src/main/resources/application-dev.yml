@@ -4,9 +4,9 @@ spring:
 #    username: admin
 #    password: Cchayan123
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/restaurants_booking
-    username: root
-    password: MYsql@123
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -60,9 +60,12 @@ application:
       activation-url: http://localhost:4200/activate-account
 
 notifylk:
-  userId: 29960
-  apiKey: M83L5EdCJmZeTSCJMEx5
-  senderId: NotifyDEMO
+  userId: ${NOTIFYLK_USERID}
+  apiKey: ${NOTIFYLK_APIKEY}
+  senderId: ${NOTIFYLK_SENDERID}
+#  userId: 29960
+#  apiKey: M83L5EdCJmZeTSCJMEx5
+#  senderId: NotifyDEMO
 
 
 #spring.jackson.serialization.indent-output=true
