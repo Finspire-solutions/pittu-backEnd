@@ -50,7 +50,7 @@ public class AdminBookingController {
     public Page<ReserveTable> getAllOtherStatusBookingDetails(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "10") String status
+            @RequestParam(defaultValue = "Rejected") String status
 
     ){
         return adminService.getAllOtherStatusBookingDetails(page, size,status);

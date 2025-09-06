@@ -86,7 +86,8 @@ public class EmailService {
         Map<String ,Object> properties =new HashMap<>();
         properties.put("customerName",reserveTable.getUsername());
         properties.put("bookingId",reserveTable.getBookedId());
-        properties.put("checkInDate",reserveTable.getDateAndTime());
+        properties.put("checkInDate",reserveTable.getDate());
+        properties.put("checkInTime",reserveTable.getTime());
         properties.put("guestCount",reserveTable.getGuestNo());
 
         Context context = new Context();
@@ -122,7 +123,7 @@ public class EmailService {
 
         Map<String ,Object> properties =new HashMap<>();
         properties.put("customerName",reserveTable.getUsername());
-        properties.put("reservedDate",reserveTable.getDateAndTime());
+        properties.put("reservedDate",reserveTable.getDate());
         properties.put("noOfPeople",reserveTable.getGuestNo());
         properties.put("reason",emailContentDto.getReason());
         properties.put("status",emailContentDto.getStatus());

@@ -2,14 +2,14 @@ package com.finspire.Grandpittu.entity;
 
 import com.finspire.Grandpittu.enums.BookingStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -32,8 +32,10 @@ public class ReserveTable {
     private String message;
     @Column(name = "table_no")
     private int tableNo;
-    @Column(name = "date_and_time")
-    private LocalDateTime dateAndTime;
+    @Column(name = "time")
+    private String time;
+    @Column(name = "date")
+    private LocalDate date;
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private BookingStatus status;  //Accepted,Rejected,Pending,Complete

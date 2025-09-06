@@ -116,15 +116,15 @@ public class BookingTableAdminService {
     }
 
     public Page<ReserveTable> getAllAcceptedBookingDetails(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by("dateAndTime").descending());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("date","time").descending());
         return repository.findByStatus(BookingStatus.ACCEPTED, pageable);
     }
     public Page<ReserveTable> getAllPendingBookingDetails(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by("dateAndTime").descending());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("date","time").descending());
         return repository.findByStatus(BookingStatus.PENDING, pageable);
     }
     public Page<ReserveTable> getAllOtherStatusBookingDetails(int page, int size,String status) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by("dateAndTime").descending());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("date","time").descending());
         try {
             BookingStatus bookingStatus = BookingStatus.valueOf(status.toUpperCase());
             return repository.findByStatus(bookingStatus, pageable);

@@ -48,8 +48,8 @@ public class SmsService {
                     "Your reservation at Grand Pittu has been confirmed!\n" +
                     "We look forward to welcoming you.\n\n" +
                     "Table No: " + reserveTable.getTableNo() + "\n" +
-                    "Date: " + reserveTable.getDateAndTime() + "\n" +    // use actual date field
-//                    "⏰ Time: " + reserveTable.getTime() + "\n" +    // use actual time field
+                    "Date: " + reserveTable.getDate() + "\n" +    // use actual date field
+                    "⏰ Time: " + reserveTable.getTime() + "\n" +    // use actual time field
                     "Location: https://maps.app.goo.gl/XSBMC4iWn5Z3opyA6\n\n" +
                     "Call us for help: 0762565485\n" +
                     "- GRANDPITTU";
@@ -89,8 +89,8 @@ public class SmsService {
             String message = "Dear " + reserveTable.getUsername() + ",\n" +
                     "We regret to inform you that your reservation request at Grand Pittu cannot be confirmed at this time, " +
                     "as no tables are available for your selected date and time.\n\n" +
-                    "📅 Date: " + reserveTable.getDateAndTime() + "\n" +
-//                    "⏰ Time: " + reserveTable.getTime() + "\n\n" +
+                    "📅 Date: " + reserveTable.getDate() + "\n" +
+                    "⏰ Time: " + reserveTable.getTime() + "\n\n" +
                     "🙏 We apologize for the inconvenience. " +
                     "Please consider choosing another date or time.\n\n" +
                     "📞 For assistance, call us at 0762565485\n" +
@@ -128,8 +128,8 @@ public class SmsService {
 
             String message = "Dear " + reserveTable.getUsername() + ",\n" +
                     "Your reservation at Grand Pittu has been successfully cancelled as per your request.\n\n" +
-                    "📅 Date: " + reserveTable.getDateAndTime() + "\n" +
-//                    "⏰ Time: " + reserveTable.getTime() + "\n\n" +
+                    "📅 Date: " + reserveTable.getDate() + "\n" +
+                    "⏰ Time: " + reserveTable.getTime() + "\n\n" +
                     "🙏 We hope to serve you in the future.\n" +
                     "📞 For assistance, call us at 0762565485\n" +
                     "- Grand Pittu";

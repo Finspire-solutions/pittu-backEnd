@@ -18,19 +18,18 @@ public class ReserveTableConverter {
     public ReserveTable converter(BookingRequestDto request){
 
         String email = request.getEmail();
-        LocalTime time = request.getDateAndTime().toLocalTime();
-        String formattedTime = time.format(DateTimeFormatter.ofPattern("HHmm"));
         String subName = email.split("@")[0];
 
 //generate booking id
-        String bookingId = subName+"_"+formattedTime;
+        String bookingId = subName+"_"+request.getTime();
 
         return ReserveTable.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
                 .phoneNo(request.getPhoneNo())
                 .tableNo(request.getTableNo())
-                .dateAndTime(request.getDateAndTime())
+                .date(request.getDate())
+                .time(request.getTime())
                 .message(request.getMessage())
                 .bookedId(bookingId)
                 .status(PENDING)

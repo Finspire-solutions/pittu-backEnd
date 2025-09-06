@@ -7,6 +7,7 @@ public interface ApplicationConstants {
     public static final String USER_NOT_FOUND = "User not found";
     public static final String BAD_REQUEST = "Bad Request";
     public static final String NO_MENU_ITEMS = "No menu items";
+    public static final String CONTACT_DETAIL_NOT_FOUND = "Contact details not found";
     public static final String BOOKING_NOT_FOUND = "Booking not found";
     public static final String YOUR_BOOKING_HAS_BEEN_ACCEPTED = "Your booking has been accepted! We look forward to seeing you.";
     public static final String YOUR_BOOKING_HAS_BEEN_REJECTED = "Unfortunately, your reservation was rejected.";

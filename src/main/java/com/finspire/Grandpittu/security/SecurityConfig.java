@@ -42,7 +42,9 @@ public class SecurityConfig {
                                         "/swagger-ui.html",
                                         "/book/**",
                                         "/admin/**",
-                                        "/menu/**"
+                                        "/menu/**",
+                                        "/contact/**"
+
                                 ).permitAll()
                                 .anyRequest()
                                 .authenticated()

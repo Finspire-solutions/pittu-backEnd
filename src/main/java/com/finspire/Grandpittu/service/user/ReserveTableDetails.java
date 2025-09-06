@@ -29,7 +29,8 @@ public class ReserveTableDetails {
         ReserveTable response = reserveTableRepository.save(reserveTableConverter.converter(request));
         return BookingResponseDto.builder()
                 .phoneNo(response.getPhoneNo())
-                .dateTime(response.getDateAndTime())
+                .date(response.getDate())
+                .time(response.getTime())
                 .email(response.getEmail())
                 .tableNo(response.getTableNo())
                 .username(response.getUsername())

@@ -30,8 +30,8 @@ public class BookingRequestDto {
     private String message;
     private int tableNo;
     @NotNull(message = "date can't be null")
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
-    private LocalDateTime dateAndTime;
+    private LocalDate date;
+    private String time;
     private int guestNo;
 
 }

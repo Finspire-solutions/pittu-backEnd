@@ -1,10 +1,7 @@
 package com.finspire.Grandpittu.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -18,7 +15,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Data
+@Getter
+@Setter
 @Builder
 @Entity
 @AllArgsConstructor

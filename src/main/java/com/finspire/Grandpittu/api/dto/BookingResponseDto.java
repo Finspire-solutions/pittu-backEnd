@@ -19,5 +19,6 @@ public class BookingResponseDto {
     private String email;
     private String phoneNo;
     private int tableNo;
-    private LocalDateTime dateTime;
+    private String time;
+    private LocalDate date;
 }
